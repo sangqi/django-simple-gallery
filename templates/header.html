@@ -1,0 +1,23 @@
+{% load static %}
+
+<nav class="navbar navbar-light justify-content-between">
+    <a class="navbar-brand" href="{% url 'home' %}">
+        <img class="navbar-logo-image" src="{% static 'images/ic_logo.png' %}" />
+        SimpleGallery
+    </a>
+    {% if request.user.is_authenticated %}
+        <div class="dropleft" data-toggle="tooltip" data-placement="bottom" title="Hi {{ request.user.username }}">
+            <a href="#" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img class="navbar-profile-image" src="{% static 'images/ic_profile.png' %}" />
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+            </div>
+        </div>
+    {% else %}
+        <div class="navbar-button-container">
+            <a href="{% url 'login' %}" class="navbar-button-login btn btn-light">Login</a>
+            <a href="{% url 'signup' %}" class="navbar-button-signup btn btn-primary">Sign Up</a>
+        </div>
+    {% endif %}
+</nav>

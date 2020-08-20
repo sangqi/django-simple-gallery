@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="signup-container">
+    <a href="{% url 'home' %}" class="signup-logo-container">
+        <img src="{% static 'images/ic_logo.png' %}" class="signup-logo-image" />
+    </a>
+
+    <form method="POST" class="col-6 signup-form">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ form.username.id_for_label }}">Username</label>
+            <input type="text" class="form-control" id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}">
+            {{ form.errors.username }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.email.id_for_label }}">Email address</label>
+            <input type="email" class="form-control" id="{{ form.email.id_for_label }}" name="{{ form.email.html_name }}">
+            {{ form.errors.email }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.password1.id_for_label }}">Password</label>
+            <input type="password" class="form-control" id="{{ form.password1.id_for_label }}" name="{{ form.password1.html_name }}">
+            {{ form.errors.password1 }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.password2.id_for_label }}">Confirm Password</label>
+            <input type="password" class="form-control" id="{{ form.password2.id_for_label }}" name="{{ form.password2.html_name }}">
+            {{ form.errors.password2 }}
+        </div>
+        <button type="submit" class="signup-button btn btn-primary col-12">Sign Up</button>
+    </form>
+</div>
+
+{% endblock content %}

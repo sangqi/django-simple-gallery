@@ -1,0 +1,39 @@
+* { box-sizing: border-box; }
+
+body {
+    font-family: sans-serif;
+}
+
+/* ---- grid ---- */
+.grid {
+    width: 100%;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 2%;
+}
+
+/* clearfix */
+.grid:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/* ---- grid-item ---- */
+
+.grid-sizer {
+    width: 32%;
+    display: none;
+}
+
+.grid-item {
+    width: 32%;
+    padding: 1%;
+}
+
+.img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}

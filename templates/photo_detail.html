@@ -32,7 +32,7 @@
         </div>
     {% else %}
         <p class="photo-detail-uploaded-by">Uploaded by <b><i>{{ photo.author.username }}</i></b> on {{ photo.uploaded_on }}</p>
-        <div class="photo-detail-like-container">
+        <div class="{% if request.user.is_authenticated %}photo-detail-like-container{% else %}photo-detail-like-container-no-login{% endif %}">
             <i id="photoDetailLikeImage" class="{% if has_liked %}fas{% else %}far{% endif %} fa-heart photo-detail-like-image"></i>
             <p id="photoDetailLikeText" class="photo-detail-like-text">
                 {{ photo.get_like_count }} like{% if photo.get_like_count > 1 %}s{% endif %}{% if has_liked %} (Already liked){% endif %}

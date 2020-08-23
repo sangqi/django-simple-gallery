@@ -1,0 +1,145 @@
+/* Photo Create */
+.photo-create-update-title {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 2%;
+}
+
+.photo-create-form {
+    margin-top: 3%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Photo Update */
+.photo-update-form {
+    margin-top: 1%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.photo-create-update-button-container {
+    display: flex;
+    padding: 0;
+    margin-top: 4%;
+}
+
+/* Photo Detail */
+.photo-detail-container {
+    position: relative;
+}
+
+.photo-detail-image-container {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-block;
+    height: 60vh;
+    max-width: 100%;
+    overflow: auto;
+}
+
+.photo-detail-image {
+    display: block;
+    width: auto;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.photo-detail-image:hover {
+    cursor: zoom-in;
+}
+
+.photo-detail-expand-image {
+    display: none;
+}
+
+.photo-detail-image:hover + .photo-detail-expand-image, .photo-detail-expand-image:hover {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    filter: brightness(0) invert(1);
+}
+
+.photo-detail-title {
+    text-align: center;
+    font-size: 1.2rem;
+    padding-left: 2%;
+    padding-right: 2%;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.photo-detail-uploaded-by {
+    text-align: center;
+    font-size: 1rem;
+    padding-left: 2%;
+    padding-right: 2%;
+    margin-top: .5%;
+    margin-bottom: 0;
+}
+
+.photo-detail-owner-info-container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1%;
+}
+
+.photo-detail-options-container {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1%;
+}
+
+.photo-detail-like-container {
+    position: absolute;
+    padding: 1%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.photo-detail-like-container-disabled {
+    margin: 0 auto;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.photo-detail-like-image {
+    color: red;
+    font-size: 1.8rem;
+}
+
+.photo-detail-like-text {
+    float: right;
+    margin-left: 6px;
+    margin-top: 0;
+    margin-bottom: 0;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+
+.photo-detail-modal-button {
+    display: block;
+    margin: 0 auto;
+    margin-top: 1.5%;
+}
+
+.photo-detail-delete-button {
+    display: block;
+    margin: 0 auto;
+    margin-top: 1%;
+}
+
+.photo-detail-modal-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}

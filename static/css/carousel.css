@@ -1,0 +1,132 @@
+.carousel {
+    background: white;
+    /* margin-top: 10px; */
+}
+
+.carousel-cell {
+    width: 66%;
+    height: 70vh;
+}
+
+.flickity-prev-next-button {
+    width: 100px;
+    height: 100px;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="flickity-prev-next-button"] {
+        width: 60px;
+        height: 60px;
+        background: #EEEEEE;
+    }
+}
+
+.flickity-prev-next-button:hover {
+    background: #EEEEEE;
+}
+
+.photo-list-empty-container {
+    width: 50%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.photo-list-empty-image {
+    width: 100%;
+    height: 100%;
+}
+
+.photo-list-upload {
+    width: 50%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+}
+
+.photo-carousel-item-container {
+    height: 60vh;
+    overflow: auto;
+    margin: 0 auto;
+    display: inline-block;
+    position: relative;
+}
+
+.photo-carousel-item-image {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+.photo-carousel-item-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: black;
+}
+
+.photo-carousel-item-overlay:hover {
+    opacity: .4;
+}
+
+.photo-carousel-item-link {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.photo-carousel-item-title {
+    opacity: 0;
+    font-size: 1.2rem;
+    color: white;
+    position: absolute;
+    bottom: 2%;
+    left: 50%;
+    transition: .5s ease;
+    transform: translateX(-50%);
+}
+
+.photo-carousel-item-overlay:hover + .photo-carousel-item-title {
+    opacity: 1;
+}
+
+.photo-carousel-page-button-container {
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo-carousel-page-button {
+    font-size: 2.4rem;
+    padding: 10px;
+}
+
+.photo-carousel-page-button:hover {
+    opacity: .7;
+}
+
+.photo-carousel-page-number {
+    font-size: 1.2rem;
+    padding-left: 2%;
+    padding-right: 2%;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.fa-disabled {
+    opacity: .5;
+    cursor: not-allowed;
+    pointer-events: none;
+}

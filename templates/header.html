@@ -1,23 +1,44 @@
 {% load static %}
 
-<nav class="navbar navbar-light justify-content-between">
+{% url 'home' as home %}
+{% url 'photo_create' as photo_create %}
+
+<nav class="navbar navbar-light navbar-expand-lg justify-content-between">
     <a class="navbar-brand" href="{% url 'home' %}">
         <img class="navbar-logo-image" src="{% static 'images/ic_logo.png' %}" />
-        SimpleGallery
+        <p class="navbar-brand-title">SimpleGallery</p>
     </a>
-    {% if request.user.is_authenticated %}
-        <div class="dropleft" data-toggle="tooltip" data-placement="bottom" title="Hi {{ request.user.username }}">
-            <a href="#" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img class="navbar-profile-image" src="{% static 'images/ic_profile.png' %}" />
-            </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
-            </div>
-        </div>
-    {% else %}
-        <div class="navbar-button-container">
-            <a href="{% url 'login' %}" class="navbar-button-login btn btn-light">Login</a>
-            <a href="{% url 'signup' %}" class="navbar-button-signup btn btn-primary">Sign Up</a>
-        </div>
-    {% endif %}
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item {% if request.get_full_path == home %}active{% endif %}">
+                <a class="nav-link" href="{{ home }}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            {% if request.user.is_authenticated %}
+                <li class="nav-item {% if request.get_full_path == photo_create %}active{% endif %}">
+                    <a class="nav-link" href="{{ photo_create }}">Upload Photo</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAccountMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Account
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownAccountMenuLink">
+                        <p class="dropdown-header">Hi {{ request.user.username }}</p>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                    </div>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a href="{% url 'login' %}" class="nav-link">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'signup' %}" class="nav-link">Sign Up</a>
+                </li>
+            {% endif %}
+        </ul>
+    <div>
 </nav>

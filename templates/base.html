@@ -5,23 +5,22 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>BasicImageApp</title>
-        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'vendor/bootstrap/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'vendor/flickity/flickity.min.css' %}">
+        <link rel="stylesheet" href="{% static 'vendor/fontawesome/css/all.min.css' %}">
         <link rel="stylesheet" href="{% static 'css/app.css' %}">
         <link rel="stylesheet" href="{% static 'css/nav_bar.css' %}">
         <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+        <link rel="stylesheet" href="{% static 'css/photo_content.css' %}">
+        <link rel="stylesheet" href="{% static 'css/carousel.css' %}">
+        <script type="text/javascript" src="{% static 'vendor/jquery/jquery-3.5.1.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/flickity/flickity.pkgd.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/bootstrap/bootstrap.bundle.min.js' %}"></script>
+        
+        <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
     </head>
     <body>
-
-        {% load static %}
-
         {% block content %}
         {% endblock content%}
-
-        <script type="text/javascript" src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/masonry.pkgd.min.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
-
     </body>
 </html>

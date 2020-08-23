@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% include "header.html" %}
+
+<p class="photo-create-update-title">Update Photo</p>
+<form class="col-6 photo-update-form" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="div-center-align col-10" style="margin-bottom: 2%;">
+        <div class="card">
+            <img class="card-img-top" src="{{ photo.image.url }}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="{{ form.title.id_for_label }}">Title</label>
+        <input type="text" class="form-control" id="{{ form.title.id_for_label }}" name="{{ form.title.html_name }}" value="{{ photo.title }}" />
+    </div>
+    {{ form.errors }}
+    <div class="col-12 photo-create-update-button-container">
+        <a href="{% url 'photo_detail' photo.pk %}" class="btn btn-light col-6">Cancel</a>
+        <button type="submit" class="btn btn-primary col-6" style="margin-left: 2%;">Confirm</button>
+    </div>
+</form>
+
+{% endblock content %}

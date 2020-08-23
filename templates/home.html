@@ -1,7 +1,53 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block content %}
 
 {% include 'header.html' %}
+
+{% if photos %}
+    <div class="carousel" data-flickity='{ "freeScroll": false, "imagesLoaded": true, "lazyLoad": 2, "cellSelector": ".carousel-cell" }'>
+        {% for photo in object_list %}
+            <div class="div-default-padding carousel-cell" id="carouselCell{{ photo.pk }}">
+            <a href="{% url 'photo_detail' photo.pk %}" class="photo-carousel-item-link">
+                <div class="div-center-align photo-carousel-item-container">
+                    <img class="photo-carousel-item-image" data-flickity-lazyload-src="{{ photo.image.url }}">
+                    <div class="photo-carousel-item-overlay"></div>
+                    <p class="photo-carousel-item-title">{{ photo.title }}</p>
+                </div>
+            </a>
+            </div>
+        {% endfor %}
+    </div>
+    {% if is_paginated %}
+        <div class="photo-carousel-page-button-container">
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}" style="color: inherit;">
+                    <i class="fas fa-arrow-circle-left photo-carousel-page-button"></i>
+                </a>
+            {% else %}
+                <i class="fas fa-arrow-circle-left fa-disabled photo-carousel-page-button"></i>
+            {% endif %}
+            <p class="photo-carousel-page-number">Page {{ page_obj.number }}</p>
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}" style="color: inherit;">
+                    <i class="fas fa-arrow-circle-right photo-carousel-page-button photo-carousel-page-next-button"></i>
+                </a>
+            {% else %}
+                <i class="fas fa-arrow-circle-right fa-disabled photo-carousel-page-button"></i>
+            {% endif %}
+        </div>
+    {% endif %}
+{% else %}
+    <div class="photo-list-empty-container">
+        <img src="{% static 'images/ic_empty.png' %}" class="photo-list-empty-image" />
+    </div>
+    {% if request.user.is_authenticated %}
+        <div class="photo-list-upload">
+            <a href="{% url 'photo_create' %}" class="btn btn-primary col-12">Upload Photo</a>
+        </div>
+    {% endif %}
+{% endif %}
 
 {% endblock content %}

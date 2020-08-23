@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% load custom_tag %}
+
+{% block content %}
+
+{% include 'header.html' %}
+
+{% has_user_liked_photo photo request.user as has_liked %}
+
+<div class="div-default-padding">
+    <div class="div-center-align photo-detail-image-container">
+        <img class="photo-detail-image" src="{{ photo.image.url }}" data-toggle="modal" data-target="#photoDetailModal">
+        <img src="{% static 'images/ic_expand.svg' %}" class="photo-detail-expand-image" />
+    </div>
+    <p class="photo-detail-title">{{ photo.title }}</p>
+    {% if request.user.is_authenticated and request.user == photo.author %}
+        <div class="photo-detail-owner-info-container">
+            <div class="photo-detail-like-container-disabled">
+                <i id="photoDetailLikeImage" class="{% if has_liked %}fas{% else %}far{% endif %} fa-heart photo-detail-like-image"></i>
+                <p id="photoDetailLikeText" class="photo-detail-like-text">
+                    {{ photo.get_like_count }} like{% if photo.get_like_count > 1 %}s{% endif %}
+                </p>
+                <span id="photoDetailHiddenId" style="display: none">{{ photo.pk }}</span>
+            </div>
+            <div class="photo-detail-options-container col-6">
+                <a class="btn btn-light col-6" href="{% url 'photo_update' photo.pk %}">Update</a>
+                <button type="button" class="btn btn-light col-6" data-toggle="modal" data-target="#deletePhotoModal" style="margin-left: 2%;">Delete</button>
+            </div>
+        </div>
+    {% else %}
+        <p class="photo-detail-uploaded-by">Uploaded by <b><i>{{ photo.author.username }}</i></b> on {{ photo.uploaded_on }}</p>
+        <div class="photo-detail-like-container">
+            <i id="photoDetailLikeImage" class="{% if has_liked %}fas{% else %}far{% endif %} fa-heart photo-detail-like-image"></i>
+            <p id="photoDetailLikeText" class="photo-detail-like-text">
+                {{ photo.get_like_count }} like{% if photo.get_like_count > 1 %}s{% endif %}{% if has_liked %} (Already liked){% endif %}
+            </p>
+            <span id="photoDetailHiddenId" style="display: none">{{ photo.pk }}</span>
+        </div>
+    {% endif %}
+</div>
+
+{% include 'photo_enlarge_modal.html' %}
+
+{% include 'photo_delete_modal.html' %}
+
+{% endblock content %}

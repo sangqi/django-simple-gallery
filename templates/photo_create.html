@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% include 'header.html' %}
+
+<p class="photo-create-update-title">Upload New Photo</p>
+<form class="col-6 photo-create-form" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="{{ form.title.id_for_label }}">Title</label>
+        <input type="text" class="form-control" id="{{ form.title.id_for_label }}" name="{{ form.title.html_name }}">
+    </div>
+    <div class="form-group">
+        <label for="{{ form.file.id_for_label }}">Image</label>
+        <input type="file" class="form-control-file" id="{{ form.file.id_for_label }}" name="{{ form.file.html_name }}" />
+    </div>
+    {{ form.errors }}
+    <div class="col-12 photo-create-update-button-container">
+        <a href="{% url 'home' %}" class="btn btn-light col-6">Cancel</a>
+        <button type="submit" class="btn btn-primary col-6" style="margin-left: 2%;">Confirm</button>
+    </div>
+</form>
+
+{% endblock content %}
